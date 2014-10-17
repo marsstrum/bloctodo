@@ -5,10 +5,39 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <style type="text/css">
+  html, body, .container {height: 100%;}
+  </style>
 </head>
 <body>
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Bloctodo</a>
+      </div>
+      <div class="navbar-collapse collapses">
+        <ul class="nav navbar-nav">
+          <li class="active"><%= link_to "Home", root_path %></li>
+          <li><%= link_to "About", about_path %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          	<% if current_user %>
+          		<li class="username">Hello <%=current_user.email %>!</li>
+              <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>                
+          	<% else %>
+              <li></li>
+          		<li><%= link_to "Sign In", new_user_session_path %> </li>
+          		<li><%= link_to "Sign Up", new_user_registration_path %></li>
+          	<% end %>
+        </ul>
+      </div>
+    </div><!--container-->
+	</div><!--navbar navigation-->
 
-<%= yield %>
-
+	<div class="container">
+		<div class="starter-template">
+			<%= yield %>
+		</div>
+	</div>
 </body>
 </html>

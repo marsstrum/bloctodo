@@ -12,3 +12,47 @@
  *= require_tree .
  */
 @import "bootstrap";
+
+html, body {
+	min-height: 100%;
+}
+
+#billboard { 
+	border-radius: 12px;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	}
+
+.table {
+	margin: auto;
+}
+
+th, td {
+	min-width: 50px;
+	text-align: center;
+	padding: 5px;
+}
+
+.starter-template {
+  padding: 50px 15px;
+  text-align: center;
+  margin-top: 50px;
+  min-height: 100%;
+  border-left: solid 5px black;
+  border-right: solid 5px black;
+  /*background-color: #9C7D58 /*#cccc39; /*#999666; #ededed;*/
+}
+
+.user-info {
+	color: white;
+}
+
+#billboard{
+	background-color: #C2986B; /*#cfcfcf;*/
+	padding: 15px 15px 10px 15px;
+}
+
+.username {
+	margin-top: 16px;
+	color: #999;
+}
