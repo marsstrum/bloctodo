@@ -1,5 +1,30 @@
-<h1>New todo</h1>
+<h1>New todo</h1> 
+	<div class="row"><div class="col-md-3"></div>
+		<div class = "col-md-6">
+			<%= form_for @todo do |f| %>
+				<% if @todo.errors.any? %>
+    			<div id="error_explanation">
+	      		<h2><%= pluralize(@todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+	      		<ul>
+	      			<% @todo.errors.full_messages.each do |msg| %>
+	        		<li><%= msg %></li>
+	      			<% end %>
+	      		</ul>
+    			</div>
+  			<% end %>
+				<div class="form-group">
+					<%= f.label :item %>
+					<%= f.text_field :item, class: 'form-control', placeholder: "Enter new task" %>
+				</div>
+					<%= f.hidden_field :completed, value: "false" %>
+				<%= f.submit "Save Task", class: 'btn btn-success' %>
 
-<%= render 'form' %>
+			<% end %>
+		</div><div class="col-md-3"></div>
+	</div>
+
+
+
+
 
 <%= link_to 'Back', todos_path %>

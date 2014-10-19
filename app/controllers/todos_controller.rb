@@ -28,11 +28,12 @@ class TodosController < ApplicationController
   def create
     @todo = Todo.new(todo_params)
     @todo.user = current_user
-
+    
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to @todo, notice: 'Todo was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @todo }
+        format.html { redirect_to todos_path, notice: 'Todo was successfully created.' }
+        #format.json { render action: 'show', status: :created, location: @todo }
+        format.json { render action: 'index', status: :created, location: @todo }
       else
         format.html { render action: 'new' }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
