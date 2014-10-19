@@ -14,7 +14,7 @@
   			<% end %>
 				<div class="form-group">
 					<%= f.label :item %>
-					<%= f.text_field :item, class: 'form-control', placeholder: "Enter new task" %>
+					<%= f.text_field :item, class: 'form-control', autofocus: true, placeholder: "Enter new task" %>
 				</div>
 					<%= f.hidden_field :completed, value: "false" %>
 				<%= f.submit "Save Task", class: 'btn btn-success' %>

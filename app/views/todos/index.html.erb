@@ -6,21 +6,19 @@
           <thead>
             <tr>
               <th>Item</th>
+              <th>Days Remaining</th>
               <th>Completed</th>
-              <th>User</th>
-              <th></th>
-              <th></th>
-              <th></th>
+              <th colspan=2>Manage</th>
             </tr>
           </thead>
 
           <tbody>
             <% @todos.each do |todo| %>
+              <% dl =(7.day - (Time.now.day - todo.created_at.day))/1.day %>
               <tr>
                 <td><%= todo.item %></td>
+                <td><%= dl %></td>              
                 <td><%= todo.completed %></td>
-                <td><%= todo.user.name %></td>
-                <td><%= link_to 'Show', todo %></td>
                 <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
                 <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>

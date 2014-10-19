@@ -37,6 +37,7 @@
 	</div><!--navbar navigation-->
 
 	<div class="container">
+    <div class="starter-template">
     <% if flash[:notice] %>
       <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -53,7 +54,7 @@
         <%= flash[:alert] %>
       </div>
     <% end %>
-		<div class="starter-template">
+    
 			<%= yield %>
 		</div>
 	</div>
