@@ -17,11 +17,11 @@
 			  <div class="form-group">
 			  	<% if devise_mapping.rememberable? %>
 			  		<%= f.label :remember_me, class: 'checkbox' do %>
-			  			<%= f.check_box :remember_me %><span class="pull-left"> Remember me</span>
+			  		<div class="check"><%= f.check_box :remember_me %><span class="pull-left"> Remember me</span></div>
 			  		<% end %>
 			  	<% end %>
-			  	<%= f.submit "Sign in", class: 'btn btn-success' %>
 			  </div>
+			  	<%= f.submit "Sign in", class: 'btn btn-success' %>
 			  <div class="form-group">
 			  	<%= render "devise/shared/links" %>
 				</div>

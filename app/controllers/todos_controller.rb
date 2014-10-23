@@ -1,30 +1,31 @@
 class TodosController < ApplicationController
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :js
 
-  # GET /todos
-  # GET /todos.json
   def index
-    @todos = Todo.where(user_id: current_user.id)
-    #@todos = Todo.all
+    if current_user
+      todos = current_user.todos
+      @completed_todos = todos.complete 
+      @incomplete_todos = todos.incomplete
+    else
+      @completed_todos = []
+      @incomplete_todos = []
+    end
+
+    @todo = Todo.new
   end
 
-  # GET /todos/1
-  # GET /todos/1.json
   def show
     #@todos = Todo.find(todo_params)
   end
 
-  # GET /todos/new
   def new
     @todo = Todo.new
   end
 
-  # GET /todos/1/edit
-  def edit
+   def edit
   end
 
-  # POST /todos
-  # POST /todos.json
   def create
     @todo = Todo.new(todo_params)
     @todo.user = current_user
@@ -43,12 +44,13 @@ class TodosController < ApplicationController
   # PATCH/PUT /todos/1
   # PATCH/PUT /todos/1.json
   def update
+    @todo.completed = !@todo.completed
     respond_to do |format|
-      if @todo.update(todo_params)
-        format.html { redirect_to @todo, notice: 'Todo was successfully updated.' }
+      if @todo.save
+        format.html { redirect_to todos_path, notice: 'Todo was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { redirect_to todos_path, notice: 'Todo was not successfully updated.' }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
     end
@@ -58,10 +60,10 @@ class TodosController < ApplicationController
   # DELETE /todos/1.json
   def destroy
     @todo.destroy
-    respond_to do |format|
+      respond_to do |format|
       format.html { redirect_to todos_url }
       format.json { head :no_content }
-    end
+      end
   end
 
   private

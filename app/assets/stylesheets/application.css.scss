@@ -17,6 +17,10 @@ html, body {
 	min-height: 100%;
 }
 
+.check {
+	padding-left: 20px;
+}
+
 #billboard { 
 	border-radius: 12px;
 	-webkit-border-radius: 12px;
@@ -31,6 +35,11 @@ th, td {
 	min-width: 50px;
 	text-align: center;
 	padding: 5px;
+}
+
+.tdcount {
+	font-weight: bold;
+	color: white;
 }
 
 .starter-template {
@@ -48,7 +57,7 @@ th, td {
 }
 
 #billboard{
-	background-color: #C2986B; /*#cfcfcf;*/
+	background-color: #c96; /*#cfcfcf;*/
 	padding: 15px 15px 10px 15px;
 }
 

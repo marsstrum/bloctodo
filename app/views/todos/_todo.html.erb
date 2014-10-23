@@ -1,0 +1,6 @@
+<% dl =(7.day - (Time.now.day - todo.created_at.day))/1.day %>
+<tr>
+  <td><%= todo.item %></td>
+  <td><%= dl %></td>              
+  <td><%= link_to "#{todo.completed? ? 'Not complete' : 'Complete'}", todo, method: :put, class: 'btn btn-primary btn-xs' %></td>
+</tr>
